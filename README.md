@@ -20,7 +20,7 @@ Click ingredient bins or press 1–8, Space serves, C tosses the bowl, P pauses.
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-Screenshots in `screenshots/` are real renders of the game taken with its `?shot=start|play|end&seed=1` staging modes (see `shots.json`).
+Screenshots in `screenshots/` are real renders of the game taken with its `?shot=play|start|end&seed=1` staging modes (see `shots.json`). The first, the cover, is a live mid-shift moment that shows the whole stall at once: the kitchen, the order board, the ingredient bins on the counter, a bowl mid-assembly, the shift timer and a plate ready to serve.
 
 ---
 
