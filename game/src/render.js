@@ -190,7 +190,8 @@ function drawHud(ctx, state, screen) {
   text(ctx, `SHIFT TIMER  ${mins}:${String(secs).padStart(2, '0')}`, 470, 48, 24, state.timeLeft < 20 ? '#ff7a6b' : '#ffffff', 'left', true);
   text(ctx, `Coins ${state.coins}`, 760, 48, 24, '#ffffff', 'left', true);
   text(ctx, `Served ${state.served}`, 920, 48, 24, '#ffffff', 'left', true);
-  text(ctx, `Strikes ${'X'.repeat(state.strikes)}${'-'.repeat(Math.max(0, MAX_STRIKES - state.strikes))}`, 1090, 48, 20, '#ff9d8a', 'left', true);
+  const strikeShown = Math.min(state.strikes, MAX_STRIKES);
+  text(ctx, `Strikes ${'X'.repeat(strikeShown)}${'-'.repeat(MAX_STRIKES - strikeShown)}`, 1090, 48, 20, '#ff9d8a', 'left', true);
   if (state.combo >= 2) text(ctx, `Combo x${state.combo}`, 470, 70, 14, '#9fe870', 'left', true);
 }
 

@@ -82,7 +82,7 @@ export function createWorld(random) {
     state.noodleReady = false;
     state.message = 'Click an ingredient, or press its number key!';
     state.messageTimer = 0;
-    state.nextOrderIn = 0;
+    state.nextOrderIn = 9 + random() * 6;
     state.over = false;
     state.lastServe = null;
     spawnOrder();
@@ -117,6 +117,7 @@ export function createWorld(random) {
   function clearBowl() {
     state.bowl = [];
     state.noodleReady = false;
+    state.noodleTimer = 0;
     say('Bowl tossed. Fresh start!');
   }
 
@@ -176,6 +177,14 @@ export function createWorld(random) {
         state.strikes += 1;
         state.combo = 0;
         say(`${order.customer} walked out! Strike ${state.strikes}/${MAX_STRIKES}.`);
+        if (state.strikes >= MAX_STRIKES) {
+          // End the shift at once: without this break, several tickets
+          // expiring in the same step could push strikes past the max
+          // and the HUD's strike pips would be drawn with a negative
+          // repeat count.
+          state.over = true;
+          break;
+        }
         spawnOrder();
       }
     }

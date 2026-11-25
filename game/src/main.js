@@ -153,7 +153,6 @@ function runGame() {
       }
     } else {
       accumulator = 0;
-      if (screen === SCREEN_TITLE) world.step(0); // keep the staged kitchen still
     }
     renderer.draw(world.state, screen, best);
   }
